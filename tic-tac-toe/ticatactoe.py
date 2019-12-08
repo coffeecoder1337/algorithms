@@ -29,3 +29,9 @@ def is_valid(n):
             return False
     return True
 
+
+def get_move():
+    n = 0
+    while not is_valid(n):
+        n = input("Введите число от 1 до 9: ")
+    return int(n)
