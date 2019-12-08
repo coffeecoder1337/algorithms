@@ -35,3 +35,13 @@ def get_move():
     while not is_valid(n):
         n = input("Введите число от 1 до 9: ")
     return int(n)
+
+
+def check_winner():
+    for coords in winner_coordinates:
+        if set(coords).issubset(set(x_moves)):
+            return 'x'
+        elif set(coords).issubset(set(o_moves)):
+            return 'o'
+        else:
+            return False
