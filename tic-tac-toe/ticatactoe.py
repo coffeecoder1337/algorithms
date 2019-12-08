@@ -1,7 +1,7 @@
 '''
-|_|_|_| 
-|_|_|_| 
-|_|_|_|
+|1|2|3| 
+|4|5|6| 
+|7|8|9|
 '''
 
 winner_coordinates = [
@@ -15,8 +15,14 @@ winner_coordinates = [
     [2, 4, 6]
 ]
 
+
+game_map = [x for x in range(1, 10)]
+
+
 x_moves = []
 o_moves = []
+
+winner = ''
 
 
 def is_valid(n):
@@ -45,3 +51,12 @@ def check_winner():
             return 'o'
         else:
             return False
+
+
+def set_move(n, player):
+    game_map[n] = player
+
+
+def print_game_map(game_map):
+    print('|' + '|'.join(str(x)+'|\n' if x % 3 == 0 else str(x) for x in game_map))
+
