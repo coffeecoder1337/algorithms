@@ -50,6 +50,14 @@ def check_winner():
     return False
 
 
+def get_empty(game_map):
+    emptys = []
+    for i, x in enumerate(game_map):
+        if x not in ['x', 'o']:
+            emptys.append(i)
+    return emptys
+
+
 def set_move(n, player, game_map):
     m = n - 1
     game_map[m] = player
@@ -72,7 +80,7 @@ def get_current_player(n):
 
 
 move = True
-while not check_winner():
+while get_empty(game_map) != [] and check_winner() == False:
     print_game_map(game_map)
     player = get_current_player(move)
     print('ходит', player)
@@ -80,4 +88,8 @@ while not check_winner():
     game_map = set_move(n, player, game_map)
     move = not move
 
-print('победил: ', check_winner())
+winner = check_winner()
+if winner:
+    print('победил: ', check_winner())
+else:
+    print('ничья')
